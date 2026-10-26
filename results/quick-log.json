@@ -1,0 +1,65 @@
+{
+  "mode": "quick",
+  "train_rows": 3312,
+  "episodes_test": 12,
+  "split": {
+    "train": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "validation": [
+      10,
+      11
+    ],
+    "test": [
+      20,
+      21
+    ]
+  },
+  "model_mae_m": {
+    "ridge": 0.006344664292247215,
+    "interpolation": 0.004237284547937822,
+    "persistence": 0.005186504814059763
+  },
+  "coverage90": 0.6443236714975845,
+  "max_mass_residual_m3": 2.318145675417327e-13,
+  "route_mae_m": {
+    "priority": 0.006278891266250232,
+    "nearest": 0.006287906068080758
+  },
+  "route": {
+    "arrivals": [
+      {
+        "crossing": 1,
+        "arrival_s": 26.633307652783937
+      },
+      {
+        "crossing": 3,
+        "arrival_s": 39.87951890401926
+      },
+      {
+        "crossing": 4,
+        "arrival_s": 49.351654859018836
+      },
+      {
+        "crossing": 2,
+        "arrival_s": 62.59786611025416
+      },
+      {
+        "crossing": 0,
+        "arrival_s": 75.84407736148948
+      }
+    ],
+    "distance_m": 401.81155714851946,
+    "budget_m": 420,
+    "duration_s": 91.96859285808658,
+    "time_budget_s": 120,
+    "dwell_s": 5,
+    "missed": [
+      5
+    ],
+    "kind": "priority"
+  }
+}
