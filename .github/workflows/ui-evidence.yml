@@ -1,0 +1,50 @@
+name: Paper Cut UI evidence
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'design/**'
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - 'floodlens/api.py'
+      - '.github/workflows/ui-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  atlas-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      TZ: UTC
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install -r requirements.lock
+      - run: npm ci && npm run build
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - name: Remove historical pre-atlas screenshot outputs
+        run: rm -f docs/images/app.png docs/images/mobile.png docs/images/reduced-motion.png
+      - name: Verify atlas interactions and capture genuine screenshots
+        run: node browser-check.mjs
+        working-directory: frontend
+      - name: Verify frozen numerical artifacts
+        run: git diff --exit-code -- models results
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: floodlens-atlas-ui-evidence
+          path: |
+            docs/images/app.png
+            docs/images/mobile.png
+            docs/images/reduced-motion.png
+          retention-days: 14
+          if-no-files-found: error

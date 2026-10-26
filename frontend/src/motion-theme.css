@@ -1,0 +1,34 @@
+/* motionstyle_papercut — Paper Cut */
+:root {
+  --bg: #E7D7C3;
+  --bg-raised: #F3E6D4;
+  --surface: #FFF8F0;
+  --ink: #2A2118;
+  --text: #2A2118;
+  --text-dim: #7A6556;
+  --primary: #E25B45;
+  --primary-light: #F08A76;
+  --primary-dark: #B93E2C;
+  --secondary: #2F6F6A;
+  --accent: #F0C14A;
+  --danger: #C44536;
+  --ok: #2F6F6A;
+  --info: #3E6BA8;
+  --sheet: #F6E4D4;
+  --sheet-pink: #F6D6D0;
+  --radius: 18px;
+  --border-width: 0px;
+  --border-color: #2A2118;
+  --shadow: 0 16px 24px rgba(80, 50, 30, 0.18);
+  --blur: 0px;
+  --font-display: Iowan Old Style, Palatino, Georgia, serif;
+  --font-body: Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-mono: SF Mono, ui-monospace, Menlo, Consolas, monospace;
+  --stagger: 0.1s;
+  --duration-sheet-x: 0.55s;
+  --ease-sheet-x: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-sheet-y: 0.55s;
+  --ease-sheet-y: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-idle-float: 3.8s;
+  --ease-idle-float: cubic-bezier(0.65, 0, 0.35, 1);
+}

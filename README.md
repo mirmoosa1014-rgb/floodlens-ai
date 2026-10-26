@@ -9,11 +9,11 @@ Can three noisy virtual gauges predict near-term depth at six road crossings on 
 
 **Simulation only. Synthetic validation does not establish real-world flood prediction or road safety. Never use this app to decide whether to enter floodwater.** This project is independent of the Flood Drone hardware application.
 
-![Actual FloodLens workbench with rotatable synthetic terrain, causal crossing forecasts, controls and inspection observations](docs/images/app.png)
+**Paper Cut field atlas:** the interface has been redesigned around a map sheet, inspection ledger, crossing record and survey setup. New browser screenshots await a successful Linux UI-evidence run; the prior dark-interface screenshots are historical, not current-design evidence. See [design and verification notes](docs/design.md).
 
 ![Actual simulator-generated 3D water surface, water-depth map, noisy measurements and paired benchmark errors](docs/images/hero.png)
 
-*Real application screenshot above; benchmark figure below is generated from the full bounded experiment. Surface elevations are vertically exaggerated. No field photograph or physical drone flight is implied.*
+*Paper Cut benchmark figure rendered from frozen saved experiment outputs. Surface elevations are vertically exaggerated. No new experiment, field photograph or physical drone flight is implied.*
 
 ## Explore the workbench
 
@@ -75,7 +75,7 @@ node browser-check.mjs
 
 Experiments overwrite representative outputs/model; the repository separately retains quick-run evidence. To regenerate that evidence, run quick then copy summary/metrics to quick-summary/quick-metrics before the full run. [Saved surface/observations](results/representative.npz) and [gauge trace](results/demo_trace.csv) accompany representative visuals. `scripts/reproduce.sh` runs tests, the full experiment, supplementary chart and frontend build.
 
-**Verified:** 12 meaningful Python tests, TypeScript checking, Vite production build, quick/full experiments and API integration. A genuine live-browser interaction check and screenshot are included. A clean isolated Python installation from pinned requirements and a clean `npm ci` both passed. The CI badge below reports hosted verification status. See [progress](docs/progress.md) for exact checks and recovery history.
+**Verified:** 12 meaningful Python tests, TypeScript checking, Vite production build, quick/full experiments and API integration. Historical pre-atlas live-browser checks passed; the new atlas-specific browser check and desktop/mobile/reduced-motion capture workflow are prepared but local Mac Chrome launch is blocked by the execution environment. A clean isolated Python installation from pinned requirements and a clean `npm ci` both passed. The CI badge below reports hosted verification status. See [progress](docs/progress.md) for exact checks and recovery history.
 
 ## Scope and limits
 
