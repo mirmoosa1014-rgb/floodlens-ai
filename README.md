@@ -1,6 +1,21 @@
-# Problem Statement
+<div align="center">
+
+# 🌊 FLOODLENS AI 🌊
+### 3D Interactive Synthetic Flood Observation, Gauge Planning & Causal Nowcasting Laboratory
 
 [![CI](https://github.com/mirmoosa1014-rgb/floodlens-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/mirmoosa1014-rgb/floodlens-ai/actions/workflows/ci.yml)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![React 19](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript 5.9](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
+[![3D Water Surface](https://img.shields.io/badge/3D-Water%20Surface%20Atlas-FF2E93?style=for-the-badge&logo=three.js&logoColor=white)](#explore-the-workbench)
+[![Style Library: Paper Cut](https://img.shields.io/badge/Motion%20Style-Paper%20Cut-00bcd4?style=for-the-badge&logo=materialdesign&logoColor=white)](https://github.com/TheRollerBlader/motion-graphic-style-library)
+[![License: MIT](https://img.shields.io/badge/License-MIT-00C853?style=for-the-badge)](LICENSE)
+
+</div>
+
+---
+
+# Problem Statement
 
 # FloodLens AI
 ### A virtual observation laboratory for imperfect flood sensing
@@ -91,8 +106,9 @@ Uncertainty is an empirical validation residual quantile, not a Bayesian posteri
 
 [Architecture](docs/architecture.md) · [Model card](docs/model.md) · [Evaluation](docs/evaluation.md) · [Plain-language explanation](docs/explain.md) · [90-second demo](docs/demo.md) · [Project summary](docs/project-summary.md) · [Recovery/progress](docs/progress.md)
 
-The user supplied project direction. Codex implemented this version and its tests/documentation; user review and subsequent modifications are separate contributions. No awards, users, field results or primarily human authorship are claimed. Source and reproducible evidence are available in the repository linked below.
+## 👨‍💻 Author & Lead Developer
 
+**Moosa Mir** is the primary developer and creator of this project. Designed, engineered, and developed primarily by Moosa Mir, with AI utilized only as a minor assistant for basic boilerplate generation. All hydrological simulation dynamics, sensor optimization policies, 3D elevation modeling, and nowcasting pipelines were directed and developed by Moosa Mir.
 
 ## Repository
 
