@@ -11,6 +11,8 @@ class Config:
     n: int = 16
     dt: float = 20.0
     def validate(self):
+        if any(type(value)!=int for value in (self.seed,self.family,self.steps,self.n)):
+            raise ValueError('Seed, family, steps and grid size must be integers')
         if not (0 <= self.seed <= 100000 and 0 <= self.family <= 50 and 0 <= self.intensity <= 200 and 10 <= self.steps <= 120 and 8 <= self.n <= 24 and 0 < self.dt <= 20):
             raise ValueError('Configuration outside bounded domain')
 

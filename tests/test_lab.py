@@ -51,6 +51,11 @@ def test_api_integration_and_validation():
 def test_invalid_config():
     with pytest.raises(ValueError):simulate(Config(steps=100000))
 
+@pytest.mark.parametrize('field,value',[('steps',10.5),('n',8.5),('seed',1.5),('family',1.5),('seed',True),('family',False),('steps','90')])
+def test_config_discrete_values_require_integers(field,value):
+    with pytest.raises(ValueError,match='must be integers'):
+        simulate(Config(**{field:value}))
+
 def test_site_time_noise_pairs_identical():
     run=simulate(Config());a=observations(run,[(4,7),(6,9)],33);b=observations(run,[(6,9)],33);assert np.array_equal(a[:,1],b[:,0])
 
