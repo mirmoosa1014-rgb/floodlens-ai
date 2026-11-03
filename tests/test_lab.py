@@ -15,6 +15,15 @@ def test_conservation_and_impermeable():
     z=np.zeros((8,8));h=np.zeros_like(z);h[3,3]=1;blocked=np.zeros_like(z,dtype=bool);blocked[3,4]=True
     out,b=step(z,h,.00001,blocked=blocked);assert out[3,4]==0;assert abs(b['residual_m3'])<1e-10;assert out.min()>=0
 
+@pytest.mark.parametrize('kwargs',[{'rain':float('nan')},{'dt':float('nan')},{'dx':float('inf')},{'drain_rate':-1e-6},{'drain_rate':float('nan')}])
+def test_step_rejects_invalid_physical_parameters(kwargs):
+    params={'rain':0,**kwargs}
+    with pytest.raises(ValueError):step(np.zeros((8,8)),np.zeros((8,8)),**params)
+
+def test_step_rejects_invalid_water_state():
+    for h in [np.full((8,8),-.1),np.full((8,8),np.nan),np.zeros((8,1))]:
+        with pytest.raises(ValueError):step(np.zeros((8,8)),h,0)
+
 def test_head_slope_direction_and_flat_equilibrium():
     z=np.zeros((8,8));h=np.zeros_like(z);h[3,3]=.1
     out,_=step(z,h,0,drain_rate=0);assert out[3,2]>0 and out[3,3]<.1

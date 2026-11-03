@@ -24,7 +24,10 @@ def terrain(cfg):
     return z,blocked
 
 def step(z,h,rain,dt=20,dx=12,blocked=None,drain_rate=1e-6):
-    if dt<=0 or dt>20 or dx<=0 or rain<0: raise ValueError('Invalid step')
+    if not np.isfinite([rain,dt,dx,drain_rate]).all() or dt<=0 or dt>20 or dx<=0 or rain<0 or drain_rate<0: raise ValueError('Invalid step')
+    z=np.asarray(z,float);h=np.asarray(h,float)
+    if z.ndim!=2 or z.size==0 or z.shape!=h.shape or not np.isfinite(z).all() or not np.isfinite(h).all() or np.any(h<0):raise ValueError('Matching finite terrain and nonnegative water grids required')
+    if blocked is not None and np.shape(blocked)!=h.shape:raise ValueError('Blocked mask must match water grid')
     blocked=np.zeros_like(h,dtype=bool) if blocked is None else blocked
     added=np.where(blocked,0,rain*dt);water=h+added
     drain=np.minimum(water,drain_rate*dt);drain[blocked]=0;water=water-drain
