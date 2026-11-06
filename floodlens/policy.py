@@ -56,7 +56,8 @@ def assimilate(predictions,events,dt=20):
 
     No pre-arrival updates; expire point data after 180 s to avoid stale certainty.
     """
-    pred=np.asarray(predictions);out=pred.copy()
+    pred=np.asarray(predictions,dtype=float);out=pred.copy()
+    events=sorted(events,key=lambda e:e['available_step'])
     for t in range(len(pred)):
         for e in events:
             a=e['available_step'];c=e['crossing']
