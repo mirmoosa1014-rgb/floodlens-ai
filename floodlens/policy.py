@@ -4,6 +4,8 @@ from .simulation import crossings
 
 def gauges(z,kind='information',seed=0,budget=3):
     n=len(z);sites=crossings(n)
+    if kind not in ('random','grid','information'):raise ValueError('unknown gauge policy')
+    if isinstance(budget,(bool,np.bool_)) or not isinstance(budget,(int,np.integer)) or not 0<=budget<=len(sites):raise ValueError('gauge budget must be an integer within available sites')
     if kind=='random':ids=np.random.default_rng(seed).choice(len(sites),budget,replace=False)
     elif kind=='grid':ids=np.linspace(0,len(sites)-1,budget,dtype=int)
     else:
