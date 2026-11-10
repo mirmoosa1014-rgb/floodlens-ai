@@ -4,6 +4,9 @@ from pathlib import Path
 import numpy as np
 FEATURES=['interpolated_depth_m','recent_delta_m','rain_100mm_h','trailing_rain_100mm_h','target_elevation_m','gauge_elevation_m','nearest_sensor_cells_normalized','depth_rain_interaction']
 def fit(X,y):
+    X=np.asarray(X,dtype=float);y=np.asarray(y,dtype=float)
+    if X.ndim!=2 or X.shape[1]!=len(FEATURES) or len(X)==0 or y.shape!=(len(X),):raise ValueError('nonempty eight-feature rows and matching scalar targets required')
+    if not np.isfinite(X).all() or not np.isfinite(y).all():raise ValueError('training data must be finite')
     mu=X.mean(0);scale=X.std(0);scale[scale<1e-8]=1
     A=np.column_stack([np.ones(len(X)),(X-mu)/scale]);penalty=np.eye(A.shape[1])*.05;penalty[0,0]=0
     weights=np.linalg.solve(A.T@A+penalty,A.T@y)
