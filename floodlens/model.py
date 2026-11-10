@@ -12,5 +12,10 @@ def predict(model,X):
     X=np.asarray(X);return np.maximum(0,np.column_stack([np.ones(len(X)),(X-model['mean'])/model['scale']])@model['weights'])
 def load(path):
     m=json.loads(Path(path).read_text())
-    if m['feature_schema']!=FEATURES or len(m['weights'])!=9:raise ValueError('Model schema mismatch')
+    if m['feature_schema']!=FEATURES:raise ValueError('Model schema mismatch')
+    for key,length in [('mean',8),('scale',8),('weights',9)]:
+        values=np.asarray(m[key],dtype=float)
+        if values.shape!=(length,) or not np.isfinite(values).all():raise ValueError('Invalid model vector: '+key)
+        if key=='scale' and np.any(values<=0):raise ValueError('Model scales must be positive')
+        m[key]=values.tolist()
     return m
