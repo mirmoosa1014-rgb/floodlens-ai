@@ -28,7 +28,11 @@ def step(z,h,rain,dt=20,dx=12,blocked=None,drain_rate=1e-6):
     z=np.asarray(z,float);h=np.asarray(h,float)
     if z.ndim!=2 or z.size==0 or z.shape!=h.shape or not np.isfinite(z).all() or not np.isfinite(h).all() or np.any(h<0):raise ValueError('Matching finite terrain and nonnegative water grids required')
     if blocked is not None and np.shape(blocked)!=h.shape:raise ValueError('Blocked mask must match water grid')
-    blocked=np.zeros_like(h,dtype=bool) if blocked is None else blocked
+    if blocked is None:blocked=np.zeros_like(h,dtype=bool)
+    else:
+        blocked=np.asarray(blocked)
+        if not np.isin(blocked,[0,1]).all():raise ValueError('Blocked mask must contain only boolean or binary values')
+        blocked=blocked.astype(bool,copy=False)
     added=np.where(blocked,0,rain*dt);water=h+added
     drain=np.minimum(water,drain_rate*dt);drain[blocked]=0;water=water-drain
     head=z+water;outgoing=np.zeros_like(water);transfers=[]
