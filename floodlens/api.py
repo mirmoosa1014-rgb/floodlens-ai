@@ -12,8 +12,8 @@ ROOT=Path(__file__).resolve().parents[1]
 app=FastAPI(title='FloodLens Synthetic Laboratory')
 app.add_middleware(CORSMiddleware,allow_origins=['http://127.0.0.1:5103','http://localhost:5103'],allow_methods=['GET','POST'],allow_headers=['Content-Type'])
 class Scenario(BaseModel):
-    seed:int=Field(31,ge=0,le=100000)
-    family:int=Field(7,ge=0,le=50)
+    seed:int=Field(31,ge=0,le=100000,strict=True)
+    family:int=Field(7,ge=0,le=50,strict=True)
     intensity:float=Field(65,ge=0,le=200)
     policy:str='information'
     threshold:float=Field(.015,gt=0,le=.2)
