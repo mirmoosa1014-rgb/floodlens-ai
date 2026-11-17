@@ -64,7 +64,8 @@ def assimilate(predictions,events,dt=20):
         for e in events:
             a=e['available_step'];c=e['crossing']
             if a<=t and (t-a)*dt<=180:
-                # At arrival, the baseline horizon increment uses only issued forecasts.
-                horizon_delta=pred[t,c]-pred[max(0,t-3),c]
+                # Anchor to the forecast issued for the observation epoch (3-step lead).
+                # Keep this reference fixed as later forecasts advance beyond arrival.
+                horizon_delta=pred[t,c]-pred[max(0,a-3),c]
                 out[t,c]=max(0,e['depth_m']+horizon_delta)
     return out

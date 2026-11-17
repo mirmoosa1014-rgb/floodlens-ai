@@ -47,8 +47,8 @@ The full bounded run trains on **9,936 rows from 24 whole episodes in terrain fa
 | Ridge nowcast, gauges only | 3.644 mm |
 | Current inverse-distance interpolation | 3.859 mm |
 | Stale interpolated-estimate persistence | 4.777 mm |
-| Forecast-priority inspection correction | 3.510 mm |
-| Nearest-site inspection correction baseline | 3.525 mm |
+| Forecast-priority inspection correction | 3.515 mm |
+| Nearest-site inspection correction baseline | 3.533 mm |
 
 The nominal **90%** gauge-model interval covers only **70.0%** of heldout/OOD targets. It is poorly calibrated outside validation conditions and is not calibrated for the inspection-corrected forecast. A smaller quick run shows an unfavorable learned outcome (**6.345 mm vs 4.237 mm interpolation**). Neither run supports an unqualified claim that ML is superior. The priority/nearest inspection difference is small and has no confidence/significance claim.
 
